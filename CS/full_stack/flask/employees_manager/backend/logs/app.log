@@ -1,0 +1,30 @@
+
+2025-04-17 13:34:01,498 - INFO - app.app - Received request to fetch all employees
+2025-04-17 13:34:01,499 - ERROR - app.app - Failed to fetch all employees: 'NoneType' object is not iterable
+2025-04-17 13:34:09,743 - INFO - app.app - Received request to create an employee
+2025-04-17 13:34:09,748 - INFO - app.app - Inserted employee: Alice Wonder
+2025-04-17 13:34:15,138 - INFO - app.app - Received request to fetch all employees
+2025-04-17 13:34:15,138 - ERROR - app.app - Failed to fetch all employees: 'NoneType' object is not iterable
+2025-04-17 13:36:53,194 - INFO - app.app - Received request to fetch all employees
+2025-04-17 13:36:53,194 - ERROR - app.app - Failed to fetch all employees: 'NoneType' object is not iterable
+2025-04-17 13:38:09,678 - INFO - app.app - Fetching employees with last name: Karatsioris
+2025-04-17 13:38:09,678 - ERROR - app.app - Error retrieving employees: 'EmployeeDatabase' object has no attribute 'get_employees_last_name'
+2025-04-17 13:38:31,789 - INFO - app.app - Fetching employees with last name: last_name=Karatsioris
+2025-04-17 13:38:31,789 - ERROR - app.app - Error retrieving employees: 'EmployeeDatabase' object has no attribute 'get_employees_last_name'
+2025-04-17 13:38:42,287 - WARNING - app.app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-17 13:42:43,915 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:42:45,061 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:45:49,107 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:45:49,250 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:47:03,472 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:47:22,267 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:47:34,857 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:47:47,415 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:48:05,162 - INFO - app.app - Received request to fetch all employees
+2025-04-17 13:48:05,163 - ERROR - app.app - Failed to fetch all employees: 'NoneType' object is not iterable
+2025-04-17 13:48:19,230 - WARNING - app.app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-17 13:49:25,258 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:49:47,028 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:50:11,925 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:50:30,694 - INFO - app.app - Flask app created and logging configured
+2025-04-17 13:50:49,395 - INFO - app.app - Flask app created and logging configured
