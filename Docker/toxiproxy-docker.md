@@ -1,0 +1,1 @@
+docker run --name toxiproxy -p 10000-11000:10000-11000 shopify/toxiproxy

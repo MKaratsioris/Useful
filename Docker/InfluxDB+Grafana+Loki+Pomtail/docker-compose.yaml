@@ -1,0 +1,75 @@
+version: "3"
+
+services:
+  loki:
+    container_name: loki
+    image: grafana/loki:2.9.2
+    ports:
+      - "3100:3100"
+    depends_on:
+      - grafana
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - cmf_hpsp
+  promtail:
+    container_name: promtail
+    image: grafana/promtail:2.9.2
+    depends_on:
+      - grafana
+    volumes:
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - cmf_hpsp
+  influxdb:
+    container_name: influxdb
+    image: influxdb:latest
+    restart: unless-stopped
+    ports:
+      - "8086:8086"
+    networks:
+      - cmf_hpsp
+    volumes:
+      - influxdb-storage:/var/lib/influxdb2:rw
+      # - ./influxdb2/var/lib/influxdb2:/var/lib/influxdb2
+      # - ./influxdb2/etc/influxdb2:/etc/influxdb2
+    environment:
+      - INFLUXD_HTTP_BIND_ADDRESS=:8086
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=adminpass
+      - DOCKER_INFLUXDB_INIT_TOKEN=admintoken
+      - INFLUXDB_DB=
+      - DOCKER_INFLUXDB_INIT_ORG=intact
+      - DOCKER_INFLUXDB_INIT_BUCKET=hpsp
+      # - DOCKER_INFLUXDB_INIT_RETENTION=30d
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=admintoken
+      - INFLUX_HOST=influxdb2
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    restart: unless-stopped
+    user: "1000"
+    ports:
+      - "3000:3000"
+    networks:
+      - cmf_hpsp
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./grafana/etc/grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=adminpass
+      # - GF_AUTH_ANONYMOUS_ENABLED=true
+
+networks:
+  cmf_hpsp:
+    driver: bridge
+
+volumes:
+  influxdb-storage:
+    driver: local
+  grafana-storage:
+    driver: local
