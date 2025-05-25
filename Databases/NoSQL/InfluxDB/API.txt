@@ -1,0 +1,14 @@
+Local
+    User: mkar
+    Password: 12345678
+    Organization: cmf
+    Bucket: cmf-intact
+    Operator API-token: IUWSj-DgmD2j0ApGA3Kp5QkH8F8JYoRWvKRg8h2S56-KyjwKTsns3wDd2NBLDpQICd2q46mwZ1PAHPApEO0aOQ==
+    Grafana(All Access) API token: VwhNXAcXQXRt55QKw40NsLKAYYVFVVC9KV_e7VNOy0ciHuz-bC7crfFiLQDKlEbORi92ZL9hqFg3oXQzrnKriA==
+
+Docker
+    User: mkar
+    Password: 12345678
+    Organization: bmw
+    Bucket: bmw-intact
+    API-token: 
