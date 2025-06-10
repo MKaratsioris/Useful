@@ -43,3 +43,7 @@ GOOD PRACTICE: Rebase in master every couple of commits....
 - git add .
 - git commit -m "......"
 - git push --set-upstream origin <name-new-branch>
+
+
+git branch -d music-player-app
+git fetch -p
