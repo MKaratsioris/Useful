@@ -67,6 +67,7 @@
 
 | COMMAND | DESCRIPTION |
 | --- | --- |
+| `docker build . -t <local_image_name>` | Build docker image |
 | `docker image ls` | List all local images |
 | `docker history <image>` | Show the image history |
 | `docker inspect <image>` | Show information (json formatted) |
@@ -95,20 +96,33 @@
 | `docker run --rm --volumes-from <container> -v $(pwd):/backup busybox tar cvfz /backup/backup.tar.gz <container-path>` | Backup a container |
 | `docker run --rm --volumes-from <container> -v $(pwd):/backup busybox sh -c "cd <container-path> && tar xvfz /backup/backup.tar.gz --strip 1"` | Restore a container from backup |
 
-# Container file system extracted
+## Container file system extracted
 docker export chronocraft-backend-1 -o backend.tar
 mkdir extracted && tar -xf backend.tar -C extracted && cd extracted
 tree -L 1 -a && tree -L 2 -a && tree -L 3 -a
 
-# Container IP address in the host network
+## Container IP address in the host network
 docker inspect nginx-server | grep IPAddress
 
-# Docker image to a file
+## Docker image to a file
 docker save -o my-image.tar my-image-name:tag
 
 - Load to new machine: docker load -i my-image.tar
 - Open tar file: tar -xf my-image.tar -C ./my-image
 
-# Docker compose logs
+## Docker compose logs
 docker compose logs -f dns
 docker compose logs --tail=100
+
+## private docker registry
+- Log in to the private repository using the following command:
+```docker login <repository_url>```
+You will be prompted for your username and password for the repository.
+- Tag your local Docker image with the repository URL using the following command:
+```docker tag <local_image_name> <repository_url>/<image_name>:<tag>```
+Replace <local_image_name> with the name of the Docker image you want to push, <repository_url> with the URL of your private repository, <image_name> with the name you want to use for the image in the repository, and <tag> with the tag you want to use for the image.
+- Push the Docker image to the private repository using the following command:
+```docker push <repository_url>/<image_name>:<tag>```
+- Verify that the Docker image is available in your private repository by checking the repository's web interface or by running the following command:
+```docker search <repository_url>/<image_name>```
+This will search for the Docker image in your private repository.
