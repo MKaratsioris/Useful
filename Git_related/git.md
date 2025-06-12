@@ -47,3 +47,11 @@ GOOD PRACTICE: Rebase in master every couple of commits....
 
 git branch -d music-player-app
 git fetch -p
+
+## Resolve merging conflicts
+- git config --global pull.rebase true
+- git pull origin test
+- git status
+- Change one of the conflicts and `git add`
+- git rebase --continue
+- git push --force-with-lease
